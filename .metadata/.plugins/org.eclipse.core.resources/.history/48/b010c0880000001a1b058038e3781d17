@@ -1,0 +1,93 @@
+package pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
+
+/**
+ * 
+ * @author rrana
+ *
+ */
+public class SignInPage {
+	
+	// Web driver object
+	WebDriver driver;
+	
+	// Create account button 
+	@FindBy(how=How.XPATH, using="//*[@id=\"SubmitCreate\"]")
+	WebElement createAccount;
+	
+	// Email address field used during registration
+	@FindBy(how=How.XPATH, using="//*[@id=\"email_create\"]")
+	WebElement createEmailAddress;
+	
+	// Error string element
+	@FindBy(how=How.XPATH, using="//*[@id=\"create_account_error\"]/ol/li")
+	WebElement invalidEmailErrorString;
+	
+	// Email address field used during sign in 
+	@FindBy(how=How.XPATH, using="//*[@id=\"email\"]")
+	WebElement signInEmailAddress;
+	
+	
+	/**
+	 * SingInPage constructor
+	 * @param driver, the web driver
+	 */
+	public SignInPage(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
+	
+	/**
+	 * Go to sign in page using URL
+	 */
+	public void goToPage() {
+		driver.navigate().to("http://automationpractice.com/index.php?controller=authentication&back=my-account");
+	}
+	
+	/**
+	 * Input an invalid email address
+	 */
+	public void inputInValidEmailAddressA() {
+		createEmailAddress.sendKeys("xyz");
+	}
+	
+	/**
+	 * Input an invalid email address
+	 */
+	public void inputInValidEmailAddressB() {
+		createEmailAddress.sendKeys("xyz@mail");
+	}
+	
+	/**
+	 * Input an invalid email address
+	 */
+	public void inputInValidEmailAddressC() {
+		createEmailAddress.sendKeys("mail.com");
+	}
+	
+	/**
+	 * Input a valid email address
+	 */
+	public void inputValidEmailAddress() {
+		createEmailAddress.sendKeys("xyz@mail.com");
+	}
+	
+	/**
+	 * Click on the create account button
+	 */
+	public void clickCreateAccount() {
+		createAccount.click();
+	}
+	
+	/**
+	 * @return, the error string when invalid email is provided
+	 */
+	public String getMessageOnInvalidEmail() {
+		return invalidEmailErrorString.getText();		
+	}
+}

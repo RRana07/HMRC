@@ -1,0 +1,35 @@
+package pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
+
+public class SignInPage {
+	
+	WebDriver driver;
+	
+	@FindBy(how=How.XPATH, using="//*[@id=\"SubmitCreate\"]")
+	WebElement CreateAccount;
+	
+	/**
+	 * SingInPage constructor
+	 * @param driver, the web driver
+	 */
+	public SignInPage(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
+	
+	/**
+	 * Go to signin page
+	 */
+	public void goToPage() {
+		
+	}
+	
+	public void inputValidEmailAddress() {
+		
+	}
+}

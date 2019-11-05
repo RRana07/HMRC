@@ -1,0 +1,23 @@
+package pages;
+
+import org.openqa.selenium.WebDriver;
+
+public class SignInPage {
+	
+	WebDriver driver;
+	
+	/**
+	 * SingInPage constructor
+	 * @param driver, the web driver
+	 */
+	public SignInPage(WebDriver driver) {
+		this.driver = driver;
+	}
+	
+	/**
+	 * 
+	 */
+	public void goToPage() {
+		
+	}
+}

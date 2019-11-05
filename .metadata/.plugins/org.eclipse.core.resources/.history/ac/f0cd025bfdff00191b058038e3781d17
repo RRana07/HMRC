@@ -1,0 +1,29 @@
+package pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+
+public class SignInPage {
+	
+	WebDriver driver;
+	
+	/**
+	 * SingInPage constructor
+	 * @param driver, the web driver
+	 */
+	public SignInPage(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
+	
+	/**
+	 * 
+	 */
+	public void goToPage() {
+		
+	}
+	
+	public void inputValidEmailAddress() {
+		
+	}
+}
