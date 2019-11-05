@@ -1,0 +1,16 @@
+package pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.*;
+
+public class LoginPage {
+	
+	public static void main(String[] arg) {
+		System.setProperty("webdriver.chrome.driver", "chromedriver");
+		WebDriver driver = new ChromeDriver();		
+		String baseUrl = "http://automationpractice.com/index.php";
+		driver.get(baseUrl);
+		System.out.println("this is login page");
+	}
+
+}

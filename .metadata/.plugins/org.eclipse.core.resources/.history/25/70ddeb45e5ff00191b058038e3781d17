@@ -1,0 +1,13 @@
+package pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.*;
+
+public class LoginPage {
+	
+	public static void main(String[] arg) {
+		WebDriver driver;
+		System.out.println("this is login page");
+	}
+
+}
