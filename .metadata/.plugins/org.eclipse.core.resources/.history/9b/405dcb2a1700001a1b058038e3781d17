@@ -1,0 +1,203 @@
+package pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+/**
+ * Sign in page 
+ * 
+ * @author rrana
+ *
+ */
+public class SignInPage {
+	
+	// Web driver object
+	WebDriver driver;
+	
+	// Create account button 
+	@FindBy(how=How.XPATH, using="//*[@id=\"SubmitCreate\"]")
+	WebElement createAccount;
+	
+	// Email address field used during registration
+	@FindBy(how=How.XPATH, using="//*[@id=\"email_create\"]")
+	WebElement createEmailAddress;
+	
+	// Error string element
+	@FindBy(how=How.XPATH, using="//*[@id=\"create_account_error\"]/ol/li")
+	WebElement invalidEmailErrorString;
+	
+	// Email address field used during sign in 
+	@FindBy(how=How.XPATH, using="//*[@id=\"email\"]")
+	WebElement signInEmailAddress;
+	
+	// Password address field used during sign in
+	@FindBy(how=How.XPATH, using="//*[@id=\"passwd\"]")
+	WebElement password;
+	
+	// The sign in button
+	@FindBy(how=How.XPATH, using="//*[@id=\"SubmitLogin\"]/span")
+	WebElement signInButton;
+	
+	// The register button 
+	@FindBy(how=How.XPATH, using="//*[@id=\"submitAccount\"]/span")
+	WebElement register;
+	
+	@FindBy(how=How.XPATH, using="//*[@id=\"id_gender1\"]")
+	WebElement genderMale;
+	
+	@FindBy(how=How.XPATH, using="//*[@id=\"id_gender2\"]")
+	WebElement genderFemale;
+	
+	@FindBy(how=How.XPATH, using="//*[@id=\"customer_firstname\"]")
+	WebElement firstName;
+	
+	@FindBy(how=How.XPATH, using="//*[@id=\"customer_lastname\"]")
+	WebElement lastName;
+	
+	@FindBy(how=How.XPATH, using="//*[@id=\"email\"]")
+	WebElement emailField;
+	
+	@FindBy(how=How.XPATH, using="//*[@id=\"passwd\"]")
+	WebElement passwordField;
+	
+	@FindBy(how=How.XPATH, using="//*[@id=\"days\"]")
+	WebElement dateOfBirthDays;
+	
+	@FindBy(how=How.XPATH, using="//*[@id=\"months\"]")
+	WebElement dateOfBirthMonths;
+	
+	@FindBy(how=How.XPATH, using="//*[@id=\"years\"]")
+	WebElement dateOfBirthYears;
+	
+	@FindBy(how=How.XPATH, using="//*[@id=\"company\"]")
+	WebElement company;
+	
+	@FindBy(how=How.XPATH, using="//*[@id=\"address1\"]")
+	WebElement address;
+	
+	@FindBy(how=How.XPATH, using="//*[@id=\"city\"]")
+	WebElement city;
+	
+	@FindBy(how=How.XPATH, using="//*[@id=\"id_state\"]")
+	WebElement state;
+	
+	@FindBy(how=How.XPATH, using="//*[@id=\"postcode\"]")
+	WebElement zipCode;
+	
+	@FindBy(how=How.XPATH, using="//*[@id=\"id_country\"]")
+	WebElement country;
+	
+	@FindBy(how=How.XPATH, using="//*[@id=\"phone\"]")
+	WebElement homeNumber;
+	
+	@FindBy(how=How.XPATH, using="//*[@id=\"phone_mobile\"]")
+	WebElement mobileNumber;
+	
+	@FindBy(how=How.XPATH, using="//*[@id=\"submitAccount\"]/span")
+	WebElement addressAlias;
+	
+	/**
+	 * SingInPage constructor
+	 * @param driver, the web driver
+	 */
+	public SignInPage(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
+	
+	/**
+	 * Go to sign in page using URL
+	 */
+	public void goToPage() {
+		driver.navigate().to("http://automationpractice.com/index.php?controller=authentication&back=my-account");
+	}
+	
+	/**
+	 * Input an invalid email address
+	 */
+	public void inputInValidRegEmailAddressA() {		
+		createEmailAddress.sendKeys("xyz");
+	}
+	
+	/**
+	 * Input an invalid email address
+	 */
+	public void inputInValidRegEmailAddressB() {
+		createEmailAddress.sendKeys("xyz@mail");
+	}
+	
+	/**
+	 * Input an invalid email address
+	 */
+	public void inputInValidRegEmailAddressC() {
+		createEmailAddress.sendKeys("mail.com");
+	}
+	
+	/**
+	 * Input a valid email address
+	 */
+	public void inputValidRegEmailAddress() {
+		createEmailAddress.sendKeys("xyz@mail.com");
+	}
+	
+	/**
+	 * Click on the create account button
+	 */
+	public void clickCreateAccount() {
+		createAccount.click();
+	}
+	
+	public void 
+	
+	/**
+	 * @return, the error string when invalid email is provided
+	 */
+	public String getMessageOnInvalidEmail() {
+		// wait for the error element to load
+		WebDriverWait wait = new WebDriverWait(driver, 20); 
+		wait.until(ExpectedConditions.elementToBeClickable(invalidEmailErrorString));
+		
+		return invalidEmailErrorString.getText();		
+	}
+	
+	/**
+	 * Input invalid sign in email address 
+	 */
+	public void inputInvalidSignInEmailAddressA() {
+		signInEmailAddress.sendKeys("xyz");
+	}
+	
+	/**
+	 * Input invalid sign in email address 
+	 */
+	public void inputInvalidSignInEmailAddressB() {
+		signInEmailAddress.sendKeys("xyz@mail");
+	}
+	
+	/**
+	 * Input invalid sign in email address 
+	 */
+	public void inputInvalidSignInEmailAddressC() {
+		signInEmailAddress.sendKeys("mai.com");
+	}
+	
+	/**
+	 * Input valid sign in email address
+	 */
+	public void inputValidSignInEmailAddress() {
+		signInEmailAddress.sendKeys("xyz@mail.com");
+	}
+	
+	public void inputIncorrectPassword() {
+		
+	}
+	
+	public void inputCorrectPassword() {
+		
+	}
+}

@@ -1,0 +1,32 @@
+package tests;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.BeforeClass;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import pages.HomePage;
+import pages.SignInPage;
+
+class Registration {
+	private WebDriver driver;
+	private HomePage homePage;
+	private SignInPage signInPage;
+	
+	@BeforeClass
+	void setUp() {
+		System.setProperty("webdriver.chrome.driver", "chromedriver");
+		driver = new ChromeDriver();
+		
+		homePage = new HomePage(driver);
+		SignInPage = new HomePage(driver);
+	}
+	
+	@Test
+	void test() {
+		fail("Not yet implemented");
+	}
+
+}

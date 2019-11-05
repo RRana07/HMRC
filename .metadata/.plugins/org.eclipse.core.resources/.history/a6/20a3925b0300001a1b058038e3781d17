@@ -1,0 +1,53 @@
+package tests;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.BeforeClass;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import pages.HomePage;
+import pages.SignInPage;
+
+class Registration {
+	private WebDriver driver;
+	
+	// Pages
+	private HomePage homePage;
+	private SignInPage signInPage;
+	
+	@BeforeClass
+	void setUp() {
+		System.setProperty("webdriver.chrome.driver", "chromedriver");
+		driver = new ChromeDriver();
+		
+		homePage = new HomePage(driver);
+		signInPage = new SignInPage(driver);
+	}
+	
+	/**
+	 * Invalid email address
+	 */
+	@Test
+	void invalidEmailAddressDuringRegistrationA(){
+		homePage.goToPage();
+	}
+	
+	/**
+	 * Invalid email address
+	 */
+	@Test
+	void invalidEmailAddressDuringRegistrationB(){
+		fail("Not yet implemented");
+	}
+	
+	/**
+	 * Invalid email address
+	 */
+	@Test
+	void invalidEmailAddressDuringRegistrationC(){
+		fail("Not yet implemented");
+	}
+
+}

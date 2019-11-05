@@ -1,0 +1,25 @@
+package tests;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.BeforeClass;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.WebDriver;
+import pages.HomePage;
+import pages.SignInPage;
+
+class Registration {
+	WebDriver driver;
+	
+	
+	@BeforeClass
+	void setUp() {
+		WebDriver driver
+	}
+	
+	@Test
+	void test() {
+		fail("Not yet implemented");
+	}
+
+}

@@ -5,6 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Sign in page 
@@ -15,32 +18,107 @@ import org.openqa.selenium.support.PageFactory;
 public class SignInPage {
 	
 	// Web driver object
-	WebDriver driver;
+	private WebDriver driver;
 	
 	// Create account button 
 	@FindBy(how=How.XPATH, using="//*[@id=\"SubmitCreate\"]")
-	WebElement createAccount;
+	private WebElement createAccount;
 	
 	// Email address field used during registration
 	@FindBy(how=How.XPATH, using="//*[@id=\"email_create\"]")
-	WebElement createEmailAddress;
+	private WebElement createEmailAddress;
 	
 	// Error string element
 	@FindBy(how=How.XPATH, using="//*[@id=\"create_account_error\"]/ol/li")
-	WebElement invalidEmailErrorString;
+	private WebElement invalidEmailErrorString;
 	
 	// Email address field used during sign in 
 	@FindBy(how=How.XPATH, using="//*[@id=\"email\"]")
-	WebElement signInEmailAddress;
+	private WebElement signInEmailAddress;
 	
 	// Password address field used during sign in
 	@FindBy(how=How.XPATH, using="//*[@id=\"passwd\"]")
-	WebElement password;
+	private WebElement password;
 	
-	// Click on the sign in button
+	// The sign in button
 	@FindBy(how=How.XPATH, using="//*[@id=\"SubmitLogin\"]/span")
-	WebElement signInButton;
+	private WebElement signInButton;
 	
+	// The register button 
+	@FindBy(how=How.XPATH, using="//*[@id=\"submitAccount\"]/span")
+	private WebElement register;
+	
+	// Radio button male 
+	@FindBy(how=How.XPATH, using="//*[@id=\"id_gender1\"]")
+	private WebElement genderMale;
+	
+	// Radio button female
+	@FindBy(how=How.XPATH, using="//*[@id=\"id_gender2\"]")
+	private WebElement genderFemale;
+	
+	// First name field
+	@FindBy(how=How.XPATH, using="//*[@id=\"customer_firstname\"]")
+	private WebElement firstName;
+	
+	// Last name field
+	@FindBy(how=How.XPATH, using="//*[@id=\"customer_lastname\"]")
+	private WebElement lastName;
+	
+	// registration form email field 
+	@FindBy(how=How.XPATH, using="//*[@id=\"email\"]")
+	private WebElement regEmailField;
+	
+	// registration form password field
+	@FindBy(how=How.XPATH, using="//*[@id=\"passwd\"]")
+	private WebElement regPasswordField;
+	
+	// days of DOB
+	@FindBy(how=How.XPATH, using="//*[@id=\"days\"]")
+	private Select dateOfBirthDays;
+	
+	// months of DOB
+	@FindBy(how=How.XPATH, using="//*[@id=\"months\"]")
+	private Select dateOfBirthMonths;
+	
+	// years of DOB
+	@FindBy(how=How.XPATH, using="//*[@id=\"years\"]")
+	private Select dateOfBirthYears;
+	
+	// Company name field
+	@FindBy(how=How.XPATH, using="//*[@id=\"company\"]")
+	private WebElement company;
+	
+	// Address field
+	@FindBy(how=How.XPATH, using="//*[@id=\"address1\"]")
+	private WebElement address;
+	
+	// City field
+	@FindBy(how=How.XPATH, using="//*[@id=\"city\"]")
+	private WebElement city;
+	
+	// state field
+	@FindBy(how=How.XPATH, using="//*[@id=\"id_state\"]")
+	private Select state;
+	
+	// Zip code field
+	@FindBy(how=How.XPATH, using="//*[@id=\"postcode\"]")
+	private WebElement zipCode;
+	
+	// Country field
+	@FindBy(how=How.XPATH, using="//*[@id=\"id_country\"]")
+	private Select country;
+	
+	// Home number field
+	@FindBy(how=How.XPATH, using="//*[@id=\"phone\"]")
+	private WebElement homeNumber;
+	
+	// Mobile number field
+	@FindBy(how=How.XPATH, using="//*[@id=\"phone_mobile\"]")
+	private WebElement mobileNumber;
+	
+	// Address alias field
+	@FindBy(how=How.XPATH, using="//*[@id=\"alias\"]")
+	private WebElement addressAlias;
 	
 	/**
 	 * SingInPage constructor
@@ -61,7 +139,7 @@ public class SignInPage {
 	/**
 	 * Input an invalid email address
 	 */
-	public void inputInValidRegEmailAddressA() {
+	public void inputInValidRegEmailAddressA() {		
 		createEmailAddress.sendKeys("xyz");
 	}
 	
@@ -81,9 +159,10 @@ public class SignInPage {
 	
 	/**
 	 * Input a valid email address
+	 * @param arg, unique email initial
 	 */
-	public void inputValidRegEmailAddress() {
-		createEmailAddress.sendKeys("xyz@mail.com");
+	public void inputValidRegEmailAddress(String arg) {
+		createEmailAddress.sendKeys(arg + "@mail.com");
 	}
 	
 	/**
@@ -94,9 +173,149 @@ public class SignInPage {
 	}
 	
 	/**
+	 * Click on the male radio button
+	 */
+	public void clickMaleRadioButton() {
+		genderMale.click();
+	}
+	
+	/**
+	 * Click on the female radio button
+	 */
+	public void clickFemaleRadioButton() {
+		genderFemale.click();
+	}
+	
+	/**
+	 * Enter first name
+	 * @param firstName, the firstName 
+	 */
+	public void enterFirstName(String firstName) {
+		this.firstName.sendKeys(firstName);
+	}
+	
+	/**
+	 * Enter last name
+	 * @param secondName, the lastName
+	 */
+	public void enterLastName(String lastName) {
+		this.lastName.sendKeys(lastName);
+	}
+	
+	/**
+	 * Change the provided email
+	 * @param email, new email
+	 */
+	public void changeRegisterFormEmail(String email) {
+		regEmailField.sendKeys(email);
+	}
+	
+	/**
+	 * Enter password for registration
+	 */
+	public void enterRegisterFormPassword() {
+		regPasswordField.sendKeys("12345");
+	}
+	
+	/**
+	 * Select DOB day
+	 */
+	public void selectDOBDay() {
+		dateOfBirthDays.selectByIndex(1);
+	}
+	
+	/**
+	 * Select DOB month
+	 */
+	public void selectDOBMonth() {
+		dateOfBirthDays.selectByIndex(1);
+	}
+	
+	/**
+	 * Select DOB year
+	 */
+	public void selectDOBYear() {
+		dateOfBirthDays.selectByIndex(1);
+	}
+	
+	/**
+	 * Provide company  
+	 */
+	public void enterCompany() {
+		company.sendKeys("XYZ LTD");
+	}
+	
+	/**
+	 * provide address
+	 */
+	public void enterAddress() {
+		address.sendKeys("Dummy street, dummy building 23");
+	}
+	
+	/**
+	 * Provide city
+	 */
+	public void enterCity() {
+		city.sendKeys("Dummy city");
+	}
+	
+	/**
+	 * Select state 
+	 */
+	public void selectState() {
+		state.selectByIndex(1);
+	}
+	
+	/**
+	 * Enter zip code
+	 */
+	public void enterZipCode(String zipCode) {
+		this.zipCode.sendKeys(zipCode);
+	}
+	
+	/**
+	 * Select country
+	 */
+	public void selectCountry() {
+		country.selectByIndex(1);
+	}
+	
+	/**
+	 * Enter the home number
+	 */
+	public void enterHomeNumber() {
+		homeNumber.sendKeys("1234567890");
+	}
+	
+	/**
+	 * Enter the mobile number
+	 */
+	public void enterMobileNumber() {
+		homeNumber.sendKeys("1234567890");
+	}
+	
+	/**
+	 * Enter address alias
+	 */
+	public void enterAddressAlias() {
+		addressAlias.sendKeys("Dummy address alias");
+	}
+	
+	/**
+	 * Click Register
+	 */
+	public void clickRegister() {
+		register.click();
+	}
+	
+	/**
 	 * @return, the error string when invalid email is provided
 	 */
 	public String getMessageOnInvalidEmail() {
+		// wait for the error element to load
+		WebDriverWait wait = new WebDriverWait(driver, 20); 
+		wait.until(ExpectedConditions.elementToBeClickable(invalidEmailErrorString));
+		
 		return invalidEmailErrorString.getText();		
 	}
 	

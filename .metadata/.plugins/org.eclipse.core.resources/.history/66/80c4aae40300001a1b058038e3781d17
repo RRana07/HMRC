@@ -1,0 +1,74 @@
+package tests;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import pages.HomePage;
+import pages.SignInPage;
+
+class Registration {
+	private WebDriver driver;
+	
+	// Pages
+	private HomePage homePage;
+	private SignInPage signInPage;
+	
+	@BeforeClass
+	void setUp() {
+		System.setProperty("webdriver.chrome.driver", "chromedriver");
+		driver = new ChromeDriver();
+		
+		homePage = new HomePage(driver);
+		signInPage = new SignInPage(driver);
+	}
+	
+	/**
+	 * Invalid email address
+	 */
+	@Test
+	void invalidEmailAddressDuringRegistrationA(){
+		signInPage.goToPage();
+		signInPage.inputInValidRegEmailAddressA();
+		String msg = signInPage.getMessageOnInvalidEmail();
+		
+		assertEquals(msg, "Invalid email address.");
+	}
+	
+	/**
+	 * Invalid email address
+	 */
+	@Test
+	void invalidEmailAddressDuringRegistrationB(){
+		signInPage.goToPage();
+		signInPage.inputInValidRegEmailAddressB();
+		String msg = signInPage.getMessageOnInvalidEmail();
+		
+		assertEquals(msg, "Invalid email address.");
+	}
+	
+	/**
+	 * Invalid email address
+	 */
+	@Test
+	void invalidEmailAddressDuringRegistrationC(){
+		signInPage.goToPage();
+		signInPage.inputInValidRegEmailAddressC();
+		String msg = signInPage.getMessageOnInvalidEmail();
+		
+		assertEquals(msg, "Invalid email address.");
+	}
+	
+	/**
+	 * Clean up after test
+	 */
+	@AfterClass
+	void cleanUp() {
+		
+	}
+
+}
