@@ -1,0 +1,9 @@
+package tests;
+
+public class RegistrationTest {
+	
+	public static void main(String[] arg) {
+		
+	}
+	
+}

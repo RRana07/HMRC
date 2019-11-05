@@ -1,0 +1,10 @@
+package tests;
+import pages;
+
+public class RegistrationTest {
+	
+	public static void main(String[] arg) {
+		
+	}
+	
+}
