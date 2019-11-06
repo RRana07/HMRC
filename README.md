@@ -21,5 +21,11 @@ Technology:
  Chrome driver: Executable used by selenium to control Google chrome ---
  Google chrome: Browser choice used for testing due to its popularity
 
+# Running the tests
+Step1 - Download/clone the project on a local directory
+Step2 - Open the project in Eclipse 
+Step3 - Under package explorer, navigate to tests and run each test cases invidually
 
+# Future implementations 
+Implementation of maven for easier execution
 
