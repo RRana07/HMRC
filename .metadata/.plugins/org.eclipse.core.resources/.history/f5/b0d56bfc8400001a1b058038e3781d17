@@ -84,7 +84,7 @@ class Registration {
 	@Test
 	void validRegistration() {
 		signInPage.goToPage();
-		signInPage.inputValidRegEmailAddress("azx");
+		signInPage.inputValidRegEmailAddress("azz");
 		signInPage.clickCreateAccount();		
 		signInPage.selectMaleGender();
 		signInPage.enterFirstName("Joe");

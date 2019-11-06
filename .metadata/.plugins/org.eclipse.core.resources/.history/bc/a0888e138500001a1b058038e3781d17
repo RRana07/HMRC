@@ -95,7 +95,7 @@ class Registration {
 		signInPage.selectDOBYear();
 		signInPage.enterCompany();
 		signInPage.enterAddress();
-		signInPage.enterCity();
+		//signInPage.enterCity();
 		signInPage.selectState();
 		signInPage.enterZipCode("12345");
 		signInPage.selectCountry();
