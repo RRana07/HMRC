@@ -81,15 +81,15 @@ public class SignInPage {
 	
 	// days of DOB
 	@FindBy(how=How.XPATH, using="//*[@id=\"days\"]")
-	private WebElement dateOfBirthDays;
+	private Select dateOfBirthDays;
 	
 	// months of DOB
 	@FindBy(how=How.XPATH, using="//*[@id=\"months\"]")
-	private WebElement dateOfBirthMonths;
+	private Select dateOfBirthMonths;
 	
 	// years of DOB
 	@FindBy(how=How.XPATH, using="//*[@id=\"years\"]")
-	private WebElement dateOfBirthYears;
+	private Select dateOfBirthYears;
 	
 	// Company name field
 	@FindBy(how=How.XPATH, using="//*[@id=\"company\"]")
@@ -114,7 +114,7 @@ public class SignInPage {
 	
 	// Country field
 	@FindBy(how=How.XPATH, using="//*[@id=\"id_country\"]")
-	private WebElement country;
+	private Select country;
 	
 	// Home number field
 	@FindBy(how=How.XPATH, using="//*[@id=\"phone\"]")
@@ -244,24 +244,24 @@ public class SignInPage {
 	 * Select DOB day
 	 */
 	public void selectDOBDay() {
-		Select select = new Select(dateOfBirthDays);
-		select.selectByIndex(3);
+		
+		dateOfBirthDays.selectByIndex(3);
 	}
 	
 	/**
 	 * Select DOB month
 	 */
 	public void selectDOBMonth() {
-		Select select = new Select(dateOfBirthMonths);
-		select.selectByIndex(3);
+			
+		dateOfBirthMonths.selectByIndex(3);
 	}
 	
 	/**
 	 * Select DOB year
 	 */
 	public void selectDOBYear() {
-		Select select = new Select(dateOfBirthYears);
-		select.selectByIndex(3);
+		
+		dateOfBirthYears.selectByIndex(3);
 	}
 	
 	/**
@@ -288,7 +288,9 @@ public class SignInPage {
 	/**
 	 * Select state 
 	 */
-	public void selectState() {		
+	public void selectState() {
+		//WebDriverWait wait = new WebDriverWait(driver, 20); 
+		//wait.until(ExpectedConditions.visibilityOf(state2));
 		Select select = new Select(state);
 		select.selectByVisibleText("Alabama");
 	}
@@ -304,8 +306,7 @@ public class SignInPage {
 	 * Select country
 	 */
 	public void selectCountry() {
-		Select select = new Select(country);
-		select.selectByVisibleText("United States");;
+		country.selectByVisibleText("United States");;
 	}
 	
 	/**

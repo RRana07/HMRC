@@ -304,8 +304,7 @@ public class SignInPage {
 	 * Select country
 	 */
 	public void selectCountry() {
-		Select select = new Select(country);
-		select.selectByVisibleText("United States");;
+		country.selectByVisibleText("United States");;
 	}
 	
 	/**

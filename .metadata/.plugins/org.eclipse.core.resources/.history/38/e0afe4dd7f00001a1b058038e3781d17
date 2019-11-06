@@ -74,12 +74,11 @@ class Registration {
 		signInPage.clickCreateAccount();
 		String msg = signInPage.getMessageOnInvalidEmail();
 		
-		assertEquals("Invalid email address.", msg);
+		assertEquals(msg, "Invalid email address.");
 	}
 	
 	/**
 	 * Valid registration
-	 * 
 	 */
 	@Test
 	void validRegistration() {
@@ -90,12 +89,11 @@ class Registration {
 		signInPage.enterFirstName("Joe");
 		signInPage.enterLastName("JJ");
 		signInPage.enterValidRegisterFormPassword();
-		signInPage.selectDOBDay();
-		signInPage.selectDOBMonth();
-		signInPage.selectDOBYear();
+		//signInPage.selectDOBDay();
+		//signInPage.selectDOBMonth();
+		//signInPage.selectDOBYear();
 		signInPage.enterCompany();
 		signInPage.enterAddress();
-		signInPage.enterCity();
 		signInPage.selectState();
 		signInPage.enterZipCode("12345");
 		signInPage.selectCountry();
@@ -103,8 +101,6 @@ class Registration {
 		signInPage.enterMobileNumber();
 		signInPage.enterAddressAlias();
 		signInPage.clickRegister();
-		
-		assertEquals("http://automationpractice.com/index.php?controller=my-account", driver.getCurrentUrl());
 	}
 	
 	

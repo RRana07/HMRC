@@ -104,7 +104,7 @@ class Registration {
 		signInPage.enterAddressAlias();
 		signInPage.clickRegister();
 		
-		assertEquals("http://automationpractice.com/index.php?controller=my-account", driver.getCurrentUrl());
+		assertEquals(expected, actual);
 	}
 	
 	

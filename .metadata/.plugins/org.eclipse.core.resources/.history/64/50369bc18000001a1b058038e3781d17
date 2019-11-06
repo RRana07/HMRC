@@ -288,7 +288,9 @@ public class SignInPage {
 	/**
 	 * Select state 
 	 */
-	public void selectState() {		
+	public void selectState() {
+		//WebDriverWait wait = new WebDriverWait(driver, 20); 
+		//wait.until(ExpectedConditions.visibilityOf(state2));
 		Select select = new Select(state);
 		select.selectByVisibleText("Alabama");
 	}
@@ -304,8 +306,7 @@ public class SignInPage {
 	 * Select country
 	 */
 	public void selectCountry() {
-		Select select = new Select(country);
-		select.selectByVisibleText("United States");;
+		country.selectByVisibleText("United States");;
 	}
 	
 	/**
