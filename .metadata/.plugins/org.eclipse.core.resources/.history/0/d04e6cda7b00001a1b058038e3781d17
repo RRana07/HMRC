@@ -9,12 +9,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.SignInPage;
 
-/**
- * Registration test
- * 
- * @author rrana
- *
- */
 class Registration {
 	private WebDriver driver;
 	

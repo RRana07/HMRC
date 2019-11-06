@@ -1,7 +1,6 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -298,8 +297,6 @@ public class SignInPage {
 	 * Select state 
 	 */
 	public void selectState() {
-		WebDriverWait wait = new WebDriverWait(driver, 20); 
-		wait.until(ExpectedConditions.elementToBeClickable(state.getWrappedElement()));
 		state.selectByVisibleText("Alabama");
 	}
 	

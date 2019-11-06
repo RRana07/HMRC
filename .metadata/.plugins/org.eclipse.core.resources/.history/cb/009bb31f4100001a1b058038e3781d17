@@ -298,8 +298,8 @@ public class SignInPage {
 	 * Select state 
 	 */
 	public void selectState() {
-		WebDriverWait wait = new WebDriverWait(driver, 20); 
-		wait.until(ExpectedConditions.elementToBeClickable(state.getWrappedElement()));
+		//WebDriverWait wait = new WebDriverWait(driver, 20); 
+		//wait.until(ExpectedConditions.elementToBeClickable(state.getFirstSelectedOption()));
 		state.selectByVisibleText("Alabama");
 	}
 	

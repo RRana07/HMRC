@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="SignIn" project="HMRC" tests="4" started="4" failures="0" errors="0" ignored="0">
+  <testsuite name="tests.SignIn" time="36.993" displayname="SignIn" uniqueid="[engine:junit-jupiter]/[class:tests.SignIn]">
+    <testcase name="noPassword" classname="tests.SignIn" time="8.823" displayname="noPassword()" uniqueid="[engine:junit-jupiter]/[class:tests.SignIn]/[method:noPassword()]"/>
+    <testcase name="validSignIn" classname="tests.SignIn" time="8.75" displayname="validSignIn()" uniqueid="[engine:junit-jupiter]/[class:tests.SignIn]/[method:validSignIn()]"/>
+    <testcase name="incorrectSignIn" classname="tests.SignIn" time="11.083" displayname="incorrectSignIn()" uniqueid="[engine:junit-jupiter]/[class:tests.SignIn]/[method:incorrectSignIn()]"/>
+    <testcase name="invalidSignInEmail" classname="tests.SignIn" time="8.336" displayname="invalidSignInEmail()" uniqueid="[engine:junit-jupiter]/[class:tests.SignIn]/[method:invalidSignInEmail()]"/>
+  </testsuite>
+</testrun>

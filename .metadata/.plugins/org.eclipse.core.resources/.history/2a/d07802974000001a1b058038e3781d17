@@ -9,12 +9,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.SignInPage;
 
-/**
- * Registration test
- * 
- * @author rrana
- *
- */
 class Registration {
 	private WebDriver driver;
 	
@@ -85,14 +79,7 @@ class Registration {
 		signInPage.goToPage();
 		signInPage.inputValidRegEmailAddress("azz");
 		signInPage.clickCreateAccount();
-		
-		try {
-			Thread.sleep(4000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		signInPage.waitForPageToLoad();
 		signInPage.selectMaleGender();
 		signInPage.enterFirstName("Joe");
 		signInPage.enterLastName("JJ");

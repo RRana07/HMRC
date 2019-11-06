@@ -6,12 +6,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-/**
- * HomePage
- * 
- * @author rrana
- *
- */
 public class HomePage {
 	
 	private WebDriver driver; 
