@@ -1,12 +1,17 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
 
 public class HomePage {
 	
 	private WebDriver driver; 
+	
+	@FindBy(how=How.XPATH, using="//*[@id=\\\"header\\\"]/div[2]/div/div/nav/div[1]")
+	private WebElement signInButton;
 	
 	/**
 	 * Constructor
@@ -14,6 +19,7 @@ public class HomePage {
 	 */
 	public HomePage(WebDriver driver) {
 		this.driver = driver;
+		PageFactory.initElements(driver, this);
 	}
 	
 	/**
@@ -24,11 +30,10 @@ public class HomePage {
 	}
 	
 	/**
-	 * Click on the signin Button 
+	 * Click on the sign in Button 
 	 */
 	public void ClickOnSignInButton() {
-		WebElement element = driver.findElement(By.xpath("//*[@id=\"header\"]/div[2]/div/div/nav/div[1]"));
-		element.click();
+		signInButton.click();
 	}
 	
 }

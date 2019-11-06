@@ -1,0 +1,16 @@
+package pages;
+
+import org.openqa.selenium.WebDriver;
+
+public class DressPage {
+	
+	WebDriver driver;
+	
+	/**
+	 * DressPage constructor
+	 * @param driver
+	 */
+	public DressPage(WebDriver driver) {
+		this.driver = driver;
+	}
+}

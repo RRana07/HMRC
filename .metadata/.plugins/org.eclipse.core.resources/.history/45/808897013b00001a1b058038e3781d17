@@ -1,0 +1,57 @@
+package pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
+
+public class DressPage {
+	// the web driver
+	WebDriver driver;
+	//@FindBy(how=How.XPATH, using="//*[@id=\"SubmitCreate\"]")
+
+	@FindBy(how=How.XPATH, using="//*[@id=\"center_column\"]/ul/li[2]/div")
+	private WebElement highestPriceDress; 
+	
+	@FindBy(how=How.XPATH, using="//*[@id=\"center_column\"]/ul/li[2]/div/div[2]/div[2]/a[1]")
+	private WebElement addToCart;
+	
+	@FindBy(how=How.XPATH, using="//*[@id=\"header\"]/div[3]/div/div/div[3]/div/a")
+	private WebElement cart;
+	
+	/**
+	 * DressPage constructor
+	 * @param driver
+	 */
+	public DressPage(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
+	
+	/**
+	 * Go to the dress page
+	 */
+	public void goToPage() {
+		driver.navigate().to("http://automationpractice.com/index.php?id_category=8&controller=category");
+		//driver.findElement(By.xpath("//*[@id=\"categories_block_left\"]/div/ul/li[1]/a")).click();
+	}
+	
+	/**
+	 * Click the cart
+	 */
+	public void clickOnCart() {
+		cart.click();
+	}
+	
+	/**
+	 * Click on the dress with the highest price
+	 */
+	public void addTheHighestPriceDressToCart() {
+		Actions action = new Actions(driver);
+		action.moveToElement(highestPriceDress).moveToElement(addToCart).click();	
+		action.build().perform();
+	}
+	
+}

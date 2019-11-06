@@ -1,0 +1,76 @@
+package tests;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+import pages.DressPage;
+import pages.SignInPage;
+
+class ShoppingCart {
+	
+	// Web driver
+	private WebDriver driver;
+	
+	// page
+	private DressPage dressPage;
+	private SignInPage signInPage;
+	
+	/**
+	 * Setup before test
+	 */
+	@BeforeAll
+	public static void setUp() {
+		System.setProperty("webdriver.chrome.driver", "chromedriver");
+	}
+	
+	/**
+	 * Setup driver and pages before each test case
+	 */
+	@BeforeEach
+	public void beforeTest() {
+		driver = new ChromeDriver();
+		dressPage = new DressPage(driver);
+		signInPage = new SignInPage(driver);
+	}
+	
+	/**
+	 * 
+	 */
+	@Test
+	void checkProductRemainInCartAfterSignOut(){
+		/*signInPage.goToPage();
+		signInPage.inputValidSignInEmailAddress();
+		signInPage.inputCorrectPassword();
+		signInPage.clickSignInButton();*/
+		
+		dressPage.goToPage();
+		dressPage.clickCart();		
+		
+		try {
+			Thread.sleep(4000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Clean up after each test
+	 */
+	@AfterEach
+	public void cleanUp() {
+		driver.close();
+	}
+
+}

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="Rerun ShoppingCart" project="HMRC" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="tests.ShoppingCart" time="15.532" displayname="ShoppingCart" uniqueid="[engine:junit-jupiter]/[class:tests.ShoppingCart]">
+    <testcase name="checkProductRemainInCartAfterSignOut" classname="tests.ShoppingCart" time="15.532" displayname="checkProductRemainInCartAfterSignOut()" uniqueid="[engine:junit-jupiter]/[class:tests.ShoppingCart]/[method:checkProductRemainInCartAfterSignOut()]"/>
+  </testsuite>
+</testrun>

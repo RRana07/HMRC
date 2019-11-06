@@ -1,0 +1,39 @@
+package pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+
+public class DressPage {
+	
+	WebDriver driver;
+	
+	/**
+	 * DressPage constructor
+	 * @param driver
+	 */
+	public DressPage(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
+	
+	/**
+	 * Go to the dress page
+	 */
+	public void goToPage() {
+		driver.navigate().to("http://automationpractice.com/index.php?id_category=8&controller=category");
+	}
+	
+	/**
+	 * Sort products by descending price
+	 */
+	public void sortByDescendingPrice() {
+		
+	}
+	
+	/**
+	 * Click on the dress with the highest price
+	 */
+	public void clickTheHighestPriceDress() {
+		
+	}
+}
