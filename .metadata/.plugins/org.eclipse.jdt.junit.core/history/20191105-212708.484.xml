@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="Registration" project="HMRC" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="tests.Registration" time="26.704" displayname="Registration" uniqueid="[engine:junit-jupiter]/[class:tests.Registration]">
+    <testcase name="invalidEmailAddressDuringRegistrationA" classname="tests.Registration" time="9.458" displayname="invalidEmailAddressDuringRegistrationA()" uniqueid="[engine:junit-jupiter]/[class:tests.Registration]/[method:invalidEmailAddressDuringRegistrationA()]"/>
+    <testcase name="invalidEmailAddressDuringRegistrationB" classname="tests.Registration" time="8.931" displayname="invalidEmailAddressDuringRegistrationB()" uniqueid="[engine:junit-jupiter]/[class:tests.Registration]/[method:invalidEmailAddressDuringRegistrationB()]"/>
+    <testcase name="invalidEmailAddressDuringRegistrationC" classname="tests.Registration" time="8.315" displayname="invalidEmailAddressDuringRegistrationC()" uniqueid="[engine:junit-jupiter]/[class:tests.Registration]/[method:invalidEmailAddressDuringRegistrationC()]"/>
+  </testsuite>
+</testrun>

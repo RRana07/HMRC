@@ -1,10 +1,12 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -38,12 +40,16 @@ public class SignInPage {
 	
 	// Password address field used during sign in
 	@FindBy(how=How.XPATH, using="//*[@id=\"passwd\"]")
-	private WebElement password;
+	private WebElement signInPassword;
 	
 	// The sign in button
 	@FindBy(how=How.XPATH, using="//*[@id=\"SubmitLogin\"]/span")
 	private WebElement signInButton;
 	
+	// Sign in error message
+	@FindBy(how=How.XPATH, using="//*[@id=\"center_column\"]/div[1]/ol/li")
+	private WebElement signInErrorString;
+		
 	// The register button 
 	@FindBy(how=How.XPATH, using="//*[@id=\"submitAccount\"]/span")
 	private WebElement register;
@@ -97,7 +103,8 @@ public class SignInPage {
 	private WebElement city;
 	
 	// state field
-	@FindBy(how=How.XPATH, using="//*[@id=\"id_state\"]")
+	//@FindBy(how=How.XPATH, using="//*[@id=\"id_state\"]")
+	@FindBy(how=How.ID, using="id_state")
 	private Select state;
 	
 	// Zip code field
@@ -175,14 +182,22 @@ public class SignInPage {
 	/**
 	 * Click on the male radio button
 	 */
-	public void clickMaleRadioButton() {
+	public void selectMaleGender() {
+		// wait for the male gender radio select element to load
+		WebDriverWait wait = new WebDriverWait(driver, 20); 
+		wait.until(ExpectedConditions.elementToBeClickable(genderMale));
+		
 		genderMale.click();
 	}
 	
 	/**
 	 * Click on the female radio button
 	 */
-	public void clickFemaleRadioButton() {
+	public void selectFemaleGender() {
+		// wait for the female gender radio select element to load
+		WebDriverWait wait = new WebDriverWait(driver, 20); 
+		wait.until(ExpectedConditions.elementToBeClickable(genderFemale));
+		
 		genderFemale.click();
 	}
 	
@@ -211,9 +226,16 @@ public class SignInPage {
 	}
 	
 	/**
-	 * Enter password for registration
+	 * Enter invalid password for registration
 	 */
-	public void enterRegisterFormPassword() {
+	public void enterInValidRegisterFormPassword() {
+		regPasswordField.sendKeys("123");
+	}
+	
+	/**
+	 * Enter valid password for registration
+	 */
+	public void enterValidRegisterFormPassword() {
 		regPasswordField.sendKeys("12345");
 	}
 	
@@ -221,21 +243,33 @@ public class SignInPage {
 	 * Select DOB day
 	 */
 	public void selectDOBDay() {
-		dateOfBirthDays.selectByIndex(1);
+		WebDriverWait wait = new WebDriverWait(driver, 20); 
+		wait.until((ExpectedCondition<Boolean>) new ExpectedCondition<Boolean>(){
+	        public Boolean apply(WebDriver driver)  
+	        {
+	        	Select select = new Select(driver.findElement(By.xpath("//*[@id=\"days\"]")));
+	            return select.getOptions().size()>3;
+	        }
+	    });
+		dateOfBirthDays.selectByIndex(3);
 	}
 	
 	/**
 	 * Select DOB month
 	 */
 	public void selectDOBMonth() {
-		dateOfBirthDays.selectByIndex(1);
+		WebDriverWait wait = new WebDriverWait(driver, 20); 
+			
+		dateOfBirthMonths.selectByIndex(3);
 	}
 	
 	/**
 	 * Select DOB year
 	 */
 	public void selectDOBYear() {
-		dateOfBirthDays.selectByIndex(1);
+		WebDriverWait wait = new WebDriverWait(driver, 20); 
+		
+		dateOfBirthYears.selectByIndex(3);
 	}
 	
 	/**
@@ -263,7 +297,7 @@ public class SignInPage {
 	 * Select state 
 	 */
 	public void selectState() {
-		state.selectByIndex(1);
+		state.selectByVisibleText("Alabama");
 	}
 	
 	/**
@@ -277,7 +311,7 @@ public class SignInPage {
 	 * Select country
 	 */
 	public void selectCountry() {
-		country.selectByIndex(1);
+		country.selectByVisibleText("United States");;
 	}
 	
 	/**
@@ -322,24 +356,10 @@ public class SignInPage {
 	/**
 	 * Input invalid sign in email address 
 	 */
-	public void inputInvalidSignInEmailAddressA() {
-		signInEmailAddress.sendKeys("xyz");
+	public void inputInvalidSignInEmailAddress() {
+		signInEmailAddress.sendKeys("xzzg");
 	}
-	
-	/**
-	 * Input invalid sign in email address 
-	 */
-	public void inputInvalidSignInEmailAddressB() {
-		signInEmailAddress.sendKeys("xyz@mail");
-	}
-	
-	/**
-	 * Input invalid sign in email address 
-	 */
-	public void inputInvalidSignInEmailAddressC() {
-		signInEmailAddress.sendKeys("mai.com");
-	}
-	
+			
 	/**
 	 * Input valid sign in email address
 	 */
@@ -347,11 +367,38 @@ public class SignInPage {
 		signInEmailAddress.sendKeys("xyz@mail.com");
 	}
 	
-	public void inputIncorrectPassword() {
-		
+	/**
+	 * Input incorrect email address
+	 */
+	public void inputInCorrectEmailAddress() {
+		signInEmailAddress.sendKeys("azz@mail.com");
 	}
 	
+	/**
+	 * Input incorrect password
+	 */
+	public void inputIncorrectPassword() {
+		signInPassword.sendKeys("1239180");
+	}
+	
+	/**
+	 * Input correct password
+	 */
 	public void inputCorrectPassword() {
-		
+		signInPassword.sendKeys("12345");
+	}
+	
+	/**
+	 * Click on the sign in button
+	 */
+	public void clickSignInButton() {
+		signInButton.click();
+	}
+	
+	/**	 
+	 * @return the error message on invalid sign in
+	 */
+	public String getMessageOnInvalidSignin() {
+		return signInErrorString.getText();
 	}
 }

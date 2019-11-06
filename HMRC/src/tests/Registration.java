@@ -77,6 +77,78 @@ class Registration {
 	}
 	
 	/**
+	 * Valid registration
+	 */
+	@Test
+	void validRegistration() {
+		signInPage.goToPage();
+		signInPage.inputValidRegEmailAddress("azz");
+		signInPage.clickCreateAccount();
+		signInPage.selectMaleGender();
+		signInPage.enterFirstName("Joe");
+		signInPage.enterLastName("JJ");
+		signInPage.enterValidRegisterFormPassword();
+		//signInPage.selectDOBDay();
+		//signInPage.selectDOBMonth();
+		//signInPage.selectDOBYear();
+		signInPage.enterCompany();
+		signInPage.enterAddress();
+		signInPage.selectState();
+		signInPage.enterZipCode("12345");
+		signInPage.selectCountry();
+		signInPage.enterHomeNumber();
+		signInPage.enterMobileNumber();
+		signInPage.enterAddressAlias();
+		signInPage.clickRegister();
+	}
+	
+	/**
+	 * Invalid sign in email
+	 */
+	@Test
+	void invalidSignInEmail() {
+		signInPage.goToPage();
+		signInPage.inputInvalidSignInEmailAddress();
+		signInPage.clickSignInButton();
+		assertEquals(signInPage.getMessageOnInvalidSignin(), "Invalid email address.");
+	}
+	
+	/**
+	 * No password on sign in
+	 */
+	@Test
+	void noPassword() {
+		signInPage.goToPage();
+		signInPage.inputValidSignInEmailAddress();
+		signInPage.clickSignInButton();
+		assertEquals(signInPage.getMessageOnInvalidSignin(), "Password is required.");
+	}
+	
+	/**
+	 * Incorrect sign in
+	 */
+	@Test
+	void incorrectSignIn() {
+		signInPage.goToPage();
+		signInPage.inputInCorrectEmailAddress();
+		signInPage.inputIncorrectPassword();
+		signInPage.clickSignInButton();
+		assertEquals(signInPage.getMessageOnInvalidSignin(), "Authentication failed.");
+	}
+	
+	/**
+	 * Valid sign in 	 
+	 */
+	@Test
+	void validSignIn() {
+		signInPage.goToPage();
+		signInPage.inputValidSignInEmailAddress();
+		signInPage.inputCorrectPassword();
+		signInPage.clickSignInButton();
+		assertEquals(driver.getCurrentUrl(), "http://automationpractice.com/index.php?controller=my-account");
+	}
+	
+	/**
 	 * Clean up after each test
 	 */
 	@AfterEach

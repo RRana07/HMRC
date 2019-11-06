@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="Rerun validSignIn()" project="HMRC" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="tests.Registration" time="9.641" displayname="Registration" uniqueid="[engine:junit-jupiter]/[class:tests.Registration]">
+    <testcase name="validSignIn" classname="tests.Registration" time="9.641" displayname="validSignIn()" uniqueid="[engine:junit-jupiter]/[class:tests.Registration]/[method:validSignIn()]"/>
+  </testsuite>
+</testrun>
